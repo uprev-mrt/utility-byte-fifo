@@ -75,7 +75,7 @@ int byte_fifo_pop(byte_fifo_t* pFifo, uint8_t* data);
  * @param len number of objects to add to byte_fifo
  * @return byte_fifo_OK on success 
  */
-int byte_fifo_push_buf(byte_fifo_t* pFifo, void* data, int len);
+int byte_fifo_push_buf(byte_fifo_t* pFifo, const uint8_t* data, int len);
 
 /**
  * @brief retrieve a buffer of objects from the byte_fifo
@@ -84,7 +84,7 @@ int byte_fifo_push_buf(byte_fifo_t* pFifo, void* data, int len);
  * @param len number of objects to retrieve
  * @return byte_fifo_OK on success 
  */
-int byte_fifo_pop_buf(byte_fifo_t* pFifo, void* data, int len);
+int byte_fifo_pop_buf(byte_fifo_t* pFifo, uint8_t* data, int len);
 
 /**
  * @brief deletes objects from byte_fifo

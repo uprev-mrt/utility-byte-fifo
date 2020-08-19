@@ -17,9 +17,9 @@
 #define byte_fifo_max(X,Y) (((X) > (Y)) ? (X) : (Y))
 
 
-void byte_fifo_init(byte_fifo_t* pFifo, int depth, int width)
+void byte_fifo_init(byte_fifo_t* pFifo, int depth)
 {
-  pFifo->mBuffer = (uint8_t*) malloc(depth * width);
+  pFifo->mBuffer = (uint8_t*) malloc(depth);
   pFifo->mHead = 0;
   pFifo->mTail = 0;
   pFifo->mMaxLen = depth;
@@ -32,7 +32,7 @@ void byte_fifo_deinit(byte_fifo_t* pFifo)
   free(pFifo->mBuffer);
 }
 
-int byte_fifo_push( byte_fifo_t* pFifo, uint8_t data)
+int byte_fifo_push( byte_fifo_t* pFifo, const uint8_t data)
 {
 	byte_fifo_LOCK;
 
@@ -89,12 +89,12 @@ int byte_fifo_pop( byte_fifo_t* pFifo, uint8_t* data)
     return byte_fifo_OK;  // return success to indicate successful push.
 }
 
-int byte_fifo_push_buf( byte_fifo_t* pFifo, uint8_t* data, int len)
+int byte_fifo_push_buf( byte_fifo_t* pFifo, const uint8_t* data, int len)
 {
   int result = 0;
   for(int i=0; i < len; i++)
   {
-    result |= byte_fifo_push(pFifo,&cast[i]);
+    result |= byte_fifo_push(pFifo, data[i]);
   }
   return result;
 }
