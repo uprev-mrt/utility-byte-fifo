@@ -1,4 +1,4 @@
-# byte_fifo
+# ByteFifo
 
 This module provides a simple byte byte_fifo in pure C. Unless there are heavy resource constraints, it is recommended to use the regular Fifo module. 
 
